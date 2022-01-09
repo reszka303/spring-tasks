@@ -3,13 +3,17 @@ package pl.javastart.dictionary;
 import java.io.IOException;
 import java.util.*;
 
-public class LinguaController {
+public class DictionaryController {
 
     private EntryRepository entryRepository = new EntryRepository();
     private FileService fileService = new FileService();
-    private Scanner scanner = new Scanner(System.in);
+    private Scanner input = new Scanner(System.in);
 
-    void mainLoop() {
+    void run() {
+        mainLoop();
+    }
+
+    private void mainLoop() {
         Option option;
         do {
             System.out.println("Witaj w aplikacji LinguApp");
@@ -38,9 +42,9 @@ public class LinguaController {
 
     private void addEntry() {
         System.out.println("Podaj oryginalną frazę");
-        String original = scanner.nextLine();
+        String original = input.nextLine();
         System.out.println("Podaj tłumaczenie");
-        String translation = scanner.nextLine();
+        String translation = input.nextLine();
         Entry entry = new Entry(original, translation);
         entryRepository.add(entry);
     }
@@ -55,7 +59,7 @@ public class LinguaController {
         Collections.shuffle(entries);
         for (Entry entry : entries) {
             System.out.println("Podaj tłumaczenie dla: " + entry.getOriginal());
-            String translation = scanner.nextLine();
+            String translation = input.nextLine();
             if (translation.equalsIgnoreCase(entry.getTranslation())) {
                 System.out.println("Odpowiedź poprawna");
                 score++;
@@ -72,11 +76,32 @@ public class LinguaController {
         do {
             System.out.println("Wybierz opcję:");
             printOptions();
-            optionNumber = scanner.nextInt();
-            scanner.nextLine();
+            optionNumber = getOption();
             option = Option.fromInt(optionNumber);
         } while (option.isEmpty());
         return option.get();
+    }
+
+    private int getOption() {
+        boolean numberOk = false;
+        int number = 0;
+        while (!numberOk) {
+            try {
+                number = getInt();
+                numberOk = true;
+            } catch (InputMismatchException e) {
+                System.err.println("Nie możesz podać liter lub innych znaków, tylko cyfry");
+            }
+        }
+        return number;
+    }
+
+    private int getInt() {
+        try {
+            return input.nextInt();
+        } finally {
+            input.nextLine();
+        }
     }
 
     private void printOptions() {

@@ -1,4 +1,4 @@
-package pl.javastart.dictionary;
+package pl.javastart.dictionary.test;
 
 import java.util.*;
 

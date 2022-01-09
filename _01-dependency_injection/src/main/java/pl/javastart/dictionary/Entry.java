@@ -30,4 +30,9 @@ public class Entry {
     public String toString() {
         return original + " : " + translation;
     }
+
+    public String toCsv() {
+        return original + ";" + translation + "\n";
+    }
+
 }
