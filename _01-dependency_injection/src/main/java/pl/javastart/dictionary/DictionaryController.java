@@ -8,17 +8,17 @@ import java.util.*;
 @Controller
 public class DictionaryController {
 
-//    private EntryRepository entryRepository = new EntryRepository();
-//    private FileService fileService = new FileService();
-//    private Scanner input = new Scanner(System.in);
-
     private final EntryRepository entryRepository;
     private final FileService fileService;
+    private final ConsoleOutputWriter consoleOutputWriter;
     private final Scanner input;
 
-    public DictionaryController(EntryRepository entryRepository, FileService fileService, Scanner input) {
+
+    public DictionaryController(EntryRepository entryRepository, FileService fileService,
+                                ConsoleOutputWriter consoleOutputWriter, Scanner input) {
         this.entryRepository = entryRepository;
         this.fileService = fileService;
+        this.consoleOutputWriter = consoleOutputWriter;
         this.input = input;
     }
 
@@ -29,7 +29,7 @@ public class DictionaryController {
     private void mainLoop() {
         Option option;
         do {
-            System.out.println("Witaj w aplikacji LinguApp");
+            consoleOutputWriter.println("Witaj w aplikacji LinguApp");
             option = chooseOption();
             executeOption(option);
         } while (option != Option.EXIT);
@@ -46,17 +46,17 @@ public class DictionaryController {
     private void close() {
         try {
             fileService.writeEntries(entryRepository.getEntries());
-            System.out.println("Zapisano stan aplikacji");
+            consoleOutputWriter.println("Zapisano stan aplikacji");
         } catch (IOException e) {
-            throw new DataWriteException("Błąd zapisu danych do pliku");
+            throw new DataWriteException("Nie udało się zapisać zmian");
         }
-        System.out.println("Bye Bye!");
+        consoleOutputWriter.println("Bye Bye!");
     }
 
     private void addEntry() {
-        System.out.println("Podaj oryginalną frazę");
+        consoleOutputWriter.println("Podaj oryginalną frazę");
         String original = input.nextLine();
-        System.out.println("Podaj tłumaczenie");
+        consoleOutputWriter.println("Podaj tłumaczenie");
         String translation = input.nextLine();
         Entry entry = new Entry(original, translation);
         entryRepository.add(entry);
@@ -65,29 +65,29 @@ public class DictionaryController {
     private void test() {
         int score = 0;
         if (entryRepository.isEmpty()) {
-            System.out.println("Dodaj przynajmniej jedną frazę do bazy.");
+            consoleOutputWriter.println("Dodaj przynajmniej jedną frazę do bazy.");
             return;
         }
         List<Entry> entries = entryRepository.getEntries();
         Collections.shuffle(entries);
         for (Entry entry : entries) {
-            System.out.println("Podaj tłumaczenie dla: " + entry.getOriginal());
+            consoleOutputWriter.println("Podaj tłumaczenie dla: " + entry.getOriginal());
             String translation = input.nextLine();
             if (translation.equalsIgnoreCase(entry.getTranslation())) {
-                System.out.println("Odpowiedź poprawna");
+                consoleOutputWriter.println("Odpowiedź poprawna");
                 score++;
             } else {
-                System.out.println("Odpowiedź nie poprawna");
+                consoleOutputWriter.println("Odpowiedź nie poprawna");
             }
         }
-        System.out.printf("Twój wynik to: %d/%d\n\n", score, entries.size());
+        consoleOutputWriter.println(String.format("Twój wynik to: %d/%d\n", score, entries.size()));
     }
 
     private Option chooseOption() {
         int optionNumber;
         Optional<Option> option;
         do {
-            System.out.println("Wybierz opcję:");
+            consoleOutputWriter.println("Wybierz opcję:");
             printOptions();
             optionNumber = getOption();
             option = Option.fromInt(optionNumber);
@@ -103,7 +103,7 @@ public class DictionaryController {
                 number = getInt();
                 numberOk = true;
             } catch (InputMismatchException e) {
-                System.err.println("Nie możesz podać liter lub innych znaków, tylko cyfry");
+                consoleOutputWriter.printlnError("Nie możesz podać liter lub innych znaków, tylko cyfry");
             }
         }
         return number;
@@ -120,7 +120,7 @@ public class DictionaryController {
     private void printOptions() {
        Option[] options = Option.values();
         for (Option option : options) {
-            System.out.println(option);
+            consoleOutputWriter.println(option.toString());
         }
     }
 
@@ -143,6 +143,7 @@ public class DictionaryController {
             if (number >= 0 && number < options.length) {
                 return Optional.of(Option.values()[number]);
             } else {
+                ConsoleOutputWriter.printlnErrorStatic("Opcja niezdefiniowana");
                 return Optional.empty();
             }
         }
