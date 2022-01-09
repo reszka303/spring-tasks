@@ -1,13 +1,26 @@
 package pl.javastart.dictionary;
 
+import org.springframework.stereotype.Controller;
+
 import java.io.IOException;
 import java.util.*;
 
+@Controller
 public class DictionaryController {
 
-    private EntryRepository entryRepository = new EntryRepository();
-    private FileService fileService = new FileService();
-    private Scanner input = new Scanner(System.in);
+//    private EntryRepository entryRepository = new EntryRepository();
+//    private FileService fileService = new FileService();
+//    private Scanner input = new Scanner(System.in);
+
+    private final EntryRepository entryRepository;
+    private final FileService fileService;
+    private final Scanner input;
+
+    public DictionaryController(EntryRepository entryRepository, FileService fileService, Scanner input) {
+        this.entryRepository = entryRepository;
+        this.fileService = fileService;
+        this.input = input;
+    }
 
     void run() {
         mainLoop();

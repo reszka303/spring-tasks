@@ -1,9 +1,12 @@
 package pl.javastart.dictionary;
 
+import org.springframework.stereotype.Service;
+
 import java.io.*;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class FileService {
 
     private final String fileName = "D:\\INNE\\Programowanie\\Projects\\spring-tasks" +
@@ -32,6 +35,7 @@ public class FileService {
             String[] split = text.split(";");
             return new Entry(split[0], split[1]);
         }
+
     }
 
 }
