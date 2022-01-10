@@ -1,5 +1,6 @@
 package pl.javastart.dictionary;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
@@ -9,8 +10,14 @@ import java.util.stream.Collectors;
 @Service
 public class FileService {
 
-    private final String fileName = "D:\\INNE\\Programowanie\\Projects\\spring-tasks" +
-            "\\_01-dependency_injection\\src\\main\\resources\\static\\data.csv";
+//    private final String fileName = "D:\\INNE\\Programowanie\\Projects\\spring-tasks" +
+//            "\\_01-dependency_injection\\src\\main\\resources\\static\\data.csv";
+
+    private final String fileName;
+
+    FileService(@Value("${filename}") String fileName) {
+        this.fileName = fileName;
+    }
 
     List<Entry> readEntries() throws IOException {
         List<Entry> entries;

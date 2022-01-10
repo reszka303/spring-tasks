@@ -11,8 +11,7 @@ public class EntryRepository {
 
     private List<Entry> entries;
 
-    EntryRepository() {
-        FileService fileService = new FileService();
+    EntryRepository(FileService fileService) {
         try {
             this.entries = fileService.readEntries();
         } catch (IOException e) {

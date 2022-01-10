@@ -1,5 +1,6 @@
 package pl.javastart.dictionary;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
@@ -12,7 +13,6 @@ public class DictionaryController {
     private final FileService fileService;
     private final ConsoleOutputWriter consoleOutputWriter;
     private final Scanner input;
-
 
     public DictionaryController(EntryRepository entryRepository, FileService fileService,
                                 ConsoleOutputWriter consoleOutputWriter, Scanner input) {
