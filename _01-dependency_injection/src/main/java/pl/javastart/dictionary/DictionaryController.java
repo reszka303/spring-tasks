@@ -1,6 +1,5 @@
 package pl.javastart.dictionary;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
 import java.io.IOException;
@@ -50,6 +49,7 @@ public class DictionaryController {
         } catch (IOException e) {
             throw new DataWriteException("Nie udało się zapisać zmian");
         }
+        input.close();
         consoleOutputWriter.println("Bye Bye!");
     }
 

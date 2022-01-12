@@ -3,7 +3,7 @@ package pl.javastart.dictionary.test;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Test {
+public class RetrieveIntException {
 
     private static Scanner input = new Scanner(System.in);
 

@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 //https://stackoverflow.com/questions/15117316/convert-decimal-to-unicode-char
 
-public class CipherCesarArray {
+public class CipherCaesarArray {
 
     private static final int SHIFT = 3;
 
