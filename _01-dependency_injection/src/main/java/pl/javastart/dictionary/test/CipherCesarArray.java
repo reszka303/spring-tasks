@@ -5,6 +5,9 @@ import java.util.Arrays;
 //https://stackoverflow.com/questions/15117316/convert-decimal-to-unicode-char
 
 public class CipherCesarArray {
+
+    private static final int SHIFT = 3;
+
     public static void main(String[] args) {
 
         String text = "Znak";
@@ -14,7 +17,7 @@ public class CipherCesarArray {
         int[] ints = convertToInt(text);
         System.out.println("ints: " + Arrays.toString(ints));
 
-        int[] intsWithShift = convertToIntWithShift(text);
+        int[] intsWithShift = convertToIntWithShift(text, SHIFT);
         System.out.println("ints with shift: " + Arrays.toString(intsWithShift));
 
         String[] strings = convertToString(ints);
@@ -39,12 +42,12 @@ public class CipherCesarArray {
         return ints;
     }
 
-    private static int[] convertToIntWithShift(String text) {
+    private static int[] convertToIntWithShift(String text, int shift) {
         char[] chars = text.toCharArray();
         int charsCapacity = chars.length;
         int[] ints = new int[charsCapacity];
         for (int i = 0; i < chars.length; i++) {
-            ints[i] = chars[i] + 3;
+            ints[i] = chars[i] + shift;
         }
         return ints;
     }
