@@ -9,12 +9,13 @@ import java.util.stream.Stream;
 
 //https://www.baeldung.com/java-string-to-stream
 
-public class CipherCesarStream {
+public class CipherCaesarStream {
 
     private static final int SHIFT = 3;
+
     public static void main(String[] args) {
 
-        String text = "Znak";
+        String text = "Znak to jest to";
 
         IntStream intStream = toIntStream(text);
         int[] ints = intStream.toArray();
@@ -50,9 +51,13 @@ public class CipherCesarStream {
         System.out.println("Strings po przesunięciu chars() ale bez referencji do metody, zwracane -> List<String>:");
         System.out.println(stringList);
 
-        List<String> stringListWithReferenceToMethod = afterShiftStringsWithReferenceToMethod(text);
-        System.out.println("Strings po przesunięciu chars() z referencją do metody, zwracane -> List<String>:");
-        System.out.println(stringListWithReferenceToMethod);
+        String encrypt = afterShiftStringsWithReferenceToMethod(text);
+        System.out.println("String encrypt po zakodowaniu: " + encrypt);
+
+        String decrypt = afterShiftBackNoReferenceToMethod(encrypt);
+        System.out.println("String decrypt po zdekodowaniu: " + decrypt);
+
+
     }
 
     private static IntStream toIntStream(String text) {
@@ -82,23 +87,31 @@ public class CipherCesarStream {
 
     private static Stream<Character> afterShiftCodePointWithReferenceToMethod(String text) {
         return text.codePoints()
-                .map(CipherCesarStream::shift)
+                .map(CipherCaesarStream::shift)
                 .mapToObj(c -> (char)c);
     }
 
     private static List<String> afterShiftStrings(String text) {
         return text.chars()
-                .map(unicode -> unicode + 3)
+                .map(unicode -> unicode + SHIFT)
                 .mapToObj(c -> String.valueOf((char) c))
                 .collect(Collectors.toList());
     }
 
-    private static List<String> afterShiftStringsWithReferenceToMethod(String text) {
+    private static String afterShiftStringsWithReferenceToMethod(String text) {
         return text.chars()
-                .map(CipherCesarStream::shift)
+                .map(CipherCaesarStream::shift)
                 .mapToObj(str -> String.valueOf((char) str))
-                .collect(Collectors.toList());
+                .collect(Collectors.joining(""));
     }
+
+    private static String afterShiftBackNoReferenceToMethod(String cipher) {
+        return cipher.chars()
+                .map(unicode -> unicode - SHIFT)
+                .mapToObj(str -> String.valueOf((char)str))
+                .collect(Collectors.joining(""));
+    }
+
 
     private static int shift(int unicode) {
         return unicode + SHIFT;
