@@ -9,16 +9,16 @@
             <column name="id" type="BIGINT" autoIncrement="true">
                 <constraints nullable="false"/>
             </column>
-            <column name="firstName" type="VARCHAR(45)">
+            <column name="first_name" type="VARCHAR(45)">
                 <constraints nullable="false"/>
             </column>
-            <column name="lastName" type="VARCHAR(45)">
+            <column name="last_name" type="VARCHAR(45)">
                 <constraints nullable="false"/>
             </column>
             <column name="pesel" type="VARCHAR(11)">
                 <constraints nullable="false"/>
             </column>
-            <column name="idNumber" type="VARCHAR(10)">
+            <column name="id_number" type="VARCHAR(10)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
