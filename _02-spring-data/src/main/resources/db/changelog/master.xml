@@ -4,8 +4,5 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
-    <include file="0001_create_table_category.xml" relativeToChangelogFile="true"/>
-    <include file="0001_create_table_device.xml" relativeToChangelogFile="true"/>
-    <include file="0001_create_table_customer.xml" relativeToChangelogFile="true"/>
-    <include file="0001_create_table_device_has_customer.xml" relativeToChangelogFile="true"/>
+    <includeAll path="changeset" relativeToChangelogFile="true"/>
 </databaseChangeLog>
