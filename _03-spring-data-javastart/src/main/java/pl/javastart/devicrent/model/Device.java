@@ -1,4 +1,4 @@
-package pl.javastart.devicerent.model;
+package pl.javastart.devicrent.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -17,10 +17,10 @@ public class Device {
     private int quantity;
     private double price;
     @ManyToOne
-    @JoinColumn(name = "category_id")
-    private Category category;
+    @JoinColumn(name = "device_category_id")
+    private DeviceCategory deviceCategory;
     @ManyToMany
-    @JoinTable(name = "device_customers",
+    @JoinTable(name = "device_has_customer",
             joinColumns = {@JoinColumn(name="device_id", referencedColumnName="id")},
             inverseJoinColumns = {@JoinColumn(name="customer_id", referencedColumnName="id")}
     )
@@ -66,12 +66,12 @@ public class Device {
         this.price = price;
     }
 
-    public Category getCategory() {
-        return category;
+    public DeviceCategory getDeviceCategory() {
+        return deviceCategory;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategory(DeviceCategory deviceCategory) {
+        this.deviceCategory = deviceCategory;
     }
 
     public List<Customer> getCustomers() {
@@ -81,4 +81,5 @@ public class Device {
     public void setCustomers(List<Customer> customers) {
         this.customers = customers;
     }
+
 }

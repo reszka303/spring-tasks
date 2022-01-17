@@ -22,7 +22,7 @@
                 <constraints nullable="false"/>
             </column>
             <column name="category_id" type="BIGINT">
-                <constraints nullable="false" foreignKeyName="fk_category_id" references="category(id)"/>
+                <constraints nullable="false" foreignKeyName="fk_category_id" references="deviceCategory(id)"/>
             </column>
         </createTable>
     </changeSet>

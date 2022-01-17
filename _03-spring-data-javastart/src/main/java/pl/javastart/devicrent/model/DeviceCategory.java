@@ -1,13 +1,12 @@
-package pl.javastart.devicerent.model;
+package pl.javastart.devicrent.model;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name="category")
-public class Category {
+@Table(name = "device_category")
+public class DeviceCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,7 +14,7 @@ public class Category {
     private String name;
     @Column(length = 1024)
     private String description;
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "deviceCategory")
     private Set<Device> devices = new HashSet<>();
 
     public Long getId() {
