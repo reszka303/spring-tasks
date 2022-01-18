@@ -5,7 +5,9 @@ CREATE TABLE device (
     name VARCHAR(255) NOT NULL,
     description VARCHAR(2048) NOT NULL,
     quantity INT NOT NULL,
-    price DOUBLE NOT NULL
+    price DOUBLE NOT NULL,
+    CONSTRAINT fk_device_category_id
+    FOREIGN KEY (device_category_id) REFERENCES device_category (id)
 );
 
 

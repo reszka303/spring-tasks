@@ -1,4 +1,4 @@
-package pl.javastart.devicerent.app;
+package pl.javastart.devicerent;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
