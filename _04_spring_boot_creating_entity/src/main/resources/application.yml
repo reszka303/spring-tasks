@@ -1,13 +1,36 @@
 spring:
 
+  profiles:
+    active: prod
+
   datasource:
-    url: jdbc:h2:mem:test
+    url: jdbc:mysql://localhost:3306/device_rent?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Europe/Warsaw
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: admin
 
   jpa:
+    generate-ddl: true
     show-sql: true
-    defer-datasource-initialization: true
     open-in-view: false
 
-  h2:
-    console:
-      path: /h2
+---
+
+#spring:
+#
+#  profiles:
+#    active: dev
+#  main:
+#    banner-mode: off
+#
+#  datasource:
+#    url: jdbc:h2:mem:test
+#
+#  jpa:
+#    show-sql: true
+#    defer-datasource-initialization: true
+#    open-in-view: false
+#
+#  h2:
+#    console:
+#      path: /h2

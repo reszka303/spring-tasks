@@ -3,6 +3,7 @@ spring:
     url: jdbc:h2:mem:test
   jpa:
     show-sql: true
+#    defer-datasource-initialization: true
   liquibase:
     contexts: dev
   h2:

@@ -3,6 +3,7 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-        https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
     <includeAll path="changeset" relativeToChangelogFile="true"/>
+<!--    <include file="db/changelog/changeset/00_create_database_device_rent.sql"/>-->
 </databaseChangeLog>

@@ -49,4 +49,5 @@ public class DeviceCategory {
     public void setDevices(Set<Device> devices) {
         this.devices = devices;
     }
+
 }
