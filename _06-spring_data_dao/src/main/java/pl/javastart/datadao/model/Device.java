@@ -1,4 +1,4 @@
-package pl.javastart.devicerent.model;
+package pl.javastart.datadao.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -27,7 +27,6 @@ public class Device {
     )
     private DeviceCategory deviceCategory;
     @ManyToMany
-    //@JoinTable umieszczamy po stronie, która jest właścicielem
     @JoinTable(
             name = "device_has_customer",
             joinColumns = {@JoinColumn(
@@ -98,5 +97,4 @@ public class Device {
     public void setCustomers(List<Customer> customers) {
         this.customers = customers;
     }
-
 }

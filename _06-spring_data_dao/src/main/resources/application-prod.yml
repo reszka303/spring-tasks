@@ -4,10 +4,9 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: admin
+
   jpa:
-    generate-ddl: true
     show-sql: true
+
   liquibase:
     contexts: prod
-#server:
-#  port: 8070

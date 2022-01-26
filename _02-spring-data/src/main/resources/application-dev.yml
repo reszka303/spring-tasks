@@ -1,11 +1,10 @@
 spring:
   datasource:
     url: jdbc:h2:mem:test
-  jpa:
-    show-sql: true
+#    show-sql: true
 #    defer-datasource-initialization: true
-  liquibase:
-    contexts: dev
+#  liquibase:
+#    contexts: dev
   h2:
     console:
       path: /h2

@@ -1,7 +1,8 @@
 -- liquibase formatted sql
 -- changeset javastart:1
+
 CREATE TABLE customer (
-    id BIGINT PRIMARY KEY AUTO_INCREMENT,
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(45) NOT NULL,
     last_name VARCHAR(45) NOT NULL,
     pesel VARCHAR(11) NOT NULL,

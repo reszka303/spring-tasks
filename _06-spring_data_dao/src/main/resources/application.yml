@@ -1,0 +1,8 @@
+spring:
+  liquibase:
+    contexts: dev
+    change-log: classpath:db/changelog/master.xml
+
+  jpa:
+    open-in-view: false
+    show-sql: true

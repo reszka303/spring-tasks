@@ -1,4 +1,4 @@
-package pl.javastart.devicerent.model;
+package pl.javastart.datadao.model;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -19,7 +19,6 @@ public class Customer {
     private String pesel;
     @Column(nullable = false, length = 10)
     private String idNumber;
-    //mappedBy customer nie jest właścicielem relacji i dlatego mappedBy umieszczamy w tej encji
     @ManyToMany(mappedBy = "customers")
     private List<Device> rentDevices = new ArrayList<>();
 
@@ -67,8 +66,7 @@ public class Customer {
         return rentDevices;
     }
 
-    public void setRentDevices(List<Device> rentDevices) {
-        this.rentDevices = rentDevices;
+    public void setRentDevices(List<Device> devices) {
+        this.rentDevices = devices;
     }
-
 }
