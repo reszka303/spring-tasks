@@ -1,7 +1,8 @@
 spring:
 
-  profiles:
-    active: prod
+
+#  profiles:
+#    active: prod
 
   datasource:
     url: jdbc:mysql://localhost:3306/device_rent?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=Europe/Warsaw
@@ -9,10 +10,10 @@ spring:
     username: root
     password: admin
 
-  jpa:
-    generate-ddl: true
-    show-sql: true
-    open-in-view: false
+#  jpa:
+#    generate-ddl: true
+#    show-sql: true
+#    open-in-view: false
 
 ---
 

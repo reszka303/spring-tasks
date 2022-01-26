@@ -3,6 +3,7 @@ package pl.javastart.datadao.model;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "device")
@@ -19,14 +20,16 @@ public class Device {
     private int quantity;
     @Column(nullable = false)
     private double price;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
+//    @ManyToOne
     @JoinColumn(
             name = "device_category_id",
             foreignKey = @ForeignKey(
                     name = "fk_device_category_id")
     )
     private DeviceCategory deviceCategory;
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
+//    @ManyToMany
     @JoinTable(
             name = "device_has_customer",
             joinColumns = {@JoinColumn(
@@ -97,4 +100,29 @@ public class Device {
     public void setCustomers(List<Customer> customers) {
         this.customers = customers;
     }
+
+    public void addCustomers(Customer customer) {
+        customers.add(customer);
+        customer.getRentDevices().add(this);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Device device = (Device) o;
+        return quantity == device.quantity &&
+                Double.compare(device.price, price) == 0 &&
+                Objects.equals(id, device.id) &&
+                Objects.equals(name, device.name) &&
+                Objects.equals(description, device.description) &&
+                Objects.equals(deviceCategory, device.deviceCategory) &&
+                Objects.equals(customers, device.customers);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description, quantity, price, deviceCategory, customers);
+    }
+
 }

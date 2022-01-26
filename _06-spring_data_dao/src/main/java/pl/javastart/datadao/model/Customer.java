@@ -3,6 +3,7 @@ package pl.javastart.datadao.model;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "customer")
@@ -69,4 +70,23 @@ public class Customer {
     public void setRentDevices(List<Device> devices) {
         this.rentDevices = devices;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return Objects.equals(id, customer.id) &&
+                Objects.equals(firstName, customer.firstName) &&
+                Objects.equals(lastName, customer.lastName) &&
+                Objects.equals(pesel, customer.pesel) &&
+                Objects.equals(idNumber, customer.idNumber) &&
+                Objects.equals(rentDevices, customer.rentDevices);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, pesel, idNumber, rentDevices);
+    }
+
 }

@@ -2,6 +2,7 @@ package pl.javastart.datadao.model;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -49,4 +50,21 @@ public class DeviceCategory {
     public void setDevices(Set<Device> devices) {
         this.devices = devices;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DeviceCategory that = (DeviceCategory) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(description, that.description) &&
+                Objects.equals(devices, that.devices);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description, devices);
+    }
+
 }
