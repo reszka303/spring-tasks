@@ -1,0 +1,16 @@
+1.
+How to name foreign key in entity java?
+
+https://stackoverflow.com/questions/40630650/how-to-set-foreign-key-contraint-name-generated-by-hibernate-on-a-linking-table
+
+
+2.
+How can I create profiles with spring boot + .yaml?
+
+https://stackoverflow.com/questions/52627023/how-can-i-create-profiles-with-spring-boot-yaml
+
+3.
+H2 Database: How to have lowercase for tablename?
+https://stackoverflow.com/questions/25984157/h2-database-how-to-have-lowercase-for-tablename
+
+

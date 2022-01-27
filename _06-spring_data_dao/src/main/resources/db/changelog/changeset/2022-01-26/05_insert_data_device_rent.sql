@@ -8,7 +8,7 @@ INSERT INTO device_category(id, name, description) VALUES (1, 'Elektronarzędzia
 INSERT INTO device_category(id, name, description) VALUES (2, 'Narzędzia', 'Narzędzia ręczne, narzędzia pomiarowe, narzędzia motoryzacyjne i narzędzia motoryzacyjne');
 
 INSERT INTO device (name, description, quantity, price, device_category_id) VALUES('Wiertarka udarowa', 'Wiertarka udarowa o dużej mocy 3000W z zestawem wierteł w komplecie', 5, 238.50, 1);
-INSERT INTO device (name, description, quantity, price, device_category_id) VALUES ('Imadło wielofunkcyjne', 'Imadło wielofunkcyjne obrotowe 4" Yato YT-6505', 8, 279, 2);
+INSERT INTO device (name, description, quantity, price, device_category_id) VALUES ('Imadło wielofunkcyjne', 'Imadło wielofunkcyjne obrotowe 4 Yato YT-6505', 8, 279, 2);
 
 
 INSERT INTO device_has_customer(device_id, customer_id) VALUES (1,1);
