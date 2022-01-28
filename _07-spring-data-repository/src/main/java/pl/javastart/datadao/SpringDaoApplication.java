@@ -25,11 +25,11 @@ public class SpringDaoApplication {
         wiertarkaUdarowa.setPrice(238.50);
         wiertarkaUdarowa.setQuantity(5);
 
-        Device imadłoWielofunkcyjne = new Device();
-        imadłoWielofunkcyjne.setName("Imadło wielofunkcyjne");
-        imadłoWielofunkcyjne.setDescription("Imadło wielofunkcyjne obrotowe 4 Yato YT-6505");
-        imadłoWielofunkcyjne.setPrice(279);
-        imadłoWielofunkcyjne.setQuantity(2);
+        Device imadloWielofukncyjne = new Device();
+        imadloWielofukncyjne.setName("Imadło wielofunkcyjne");
+        imadloWielofukncyjne.setDescription("Imadło wielofunkcyjne obrotowe 4 Yato YT-6505");
+        imadloWielofukncyjne.setPrice(279);
+        imadloWielofukncyjne.setQuantity(2);
 
         Device pilarkaLancuchowa = new Device();
         pilarkaLancuchowa.setName("Pilarka łańcuchowa");
@@ -38,13 +38,13 @@ public class SpringDaoApplication {
         pilarkaLancuchowa.setQuantity(4);
 
 
-        DeviceCategory elektronarzędzia = new DeviceCategory();
-        elektronarzędzia.setName("Elektronarzędzia");
-        elektronarzędzia.setDescription("Wiertarki, szlifierki, młoty udarowe i inne elektronarzędzia");
+        DeviceCategory elektronarzedzia = new DeviceCategory();
+        elektronarzedzia.setName("Elektronarzędzia");
+        elektronarzedzia.setDescription("Wiertarki, szlifierki, młoty udarowe i inne elektronarzędzia");
 
-        DeviceCategory narzędzia = new DeviceCategory();
-        narzędzia.setName("Narzędzia");
-        narzędzia.setDescription("Narzędzia ręczne, narzędzia pomiarowe, narzędzia motoryzacyjne");
+        DeviceCategory narzedzia = new DeviceCategory();
+        narzedzia.setName("Narzędzia");
+        narzedzia.setDescription("Narzędzia ręczne, narzędzia pomiarowe, narzędzia motoryzacyjne");
 
         DeviceCategory domIOgrod  = new DeviceCategory();
         domIOgrod.setName("Narzędzia mechaniczne");
@@ -62,25 +62,25 @@ public class SpringDaoApplication {
         piotrAdamski.setPesel("12345678911");
         piotrAdamski.setIdNumber("ABC123456");
 
-        Customer arkadiuszNowak = new Customer();
-        piotrAdamski.setFirstName("Arkadiusz");
-        piotrAdamski.setLastName("Nowak");
-        piotrAdamski.setPesel("32345688911");
-        piotrAdamski.setIdNumber("ABD123656");
+//        Customer arkadiuszNowak = new Customer();
+//        arkadiuszNowak.setFirstName("Arkadiusz");
+//        arkadiuszNowak.setLastName("Nowak");
+//        arkadiuszNowak.setPesel("32345688911");
+//        arkadiuszNowak.setIdNumber("ABD123656");
 
 
-        wiertarkaUdarowa.setDeviceCategory(elektronarzędzia);
-        imadłoWielofunkcyjne.setDeviceCategory(narzędzia);
+        wiertarkaUdarowa.setDeviceCategory(elektronarzedzia);
+        imadloWielofukncyjne.setDeviceCategory(narzedzia);
         pilarkaLancuchowa.setDeviceCategory(domIOgrod);
 
 
         wiertarkaUdarowa.addCustomers(janKowalski);
-        imadłoWielofunkcyjne.addCustomers(piotrAdamski);
-//        pilarkaLancuchowa.addCustomers(arkadiuszNowak);
+        imadloWielofukncyjne.addCustomers(piotrAdamski);
+        pilarkaLancuchowa.addCustomers(janKowalski);
 
         deviceDao.save(wiertarkaUdarowa);
-        deviceDao.save(imadłoWielofunkcyjne);
-//        deviceDao.save(pilarkaLancuchowa);
+        deviceDao.save(imadloWielofukncyjne);
+        deviceDao.save(pilarkaLancuchowa);
 
     }
 

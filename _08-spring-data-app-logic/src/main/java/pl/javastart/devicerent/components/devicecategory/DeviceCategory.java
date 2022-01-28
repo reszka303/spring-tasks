@@ -1,4 +1,6 @@
-package pl.javastart.datadao.model;
+package pl.javastart.devicerent.components.devicecategory;
+
+import pl.javastart.devicerent.components.device.Device;
 
 import javax.persistence.*;
 import java.util.HashSet;

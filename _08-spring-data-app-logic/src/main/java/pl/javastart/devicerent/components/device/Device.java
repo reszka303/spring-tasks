@@ -1,4 +1,7 @@
-package pl.javastart.datadao.model;
+package pl.javastart.devicerent.components.device;
+
+import pl.javastart.devicerent.components.customer.Customer;
+import pl.javastart.devicerent.components.devicecategory.DeviceCategory;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -21,8 +24,6 @@ public class Device {
     @Column(nullable = false)
     private double price;
     @ManyToOne(cascade = CascadeType.PERSIST)
-//    @ManyToOne(cascade = CascadeType.ALL)
-//    @ManyToOne
     @JoinColumn(
             name = "device_category_id",
             foreignKey = @ForeignKey(
@@ -30,8 +31,6 @@ public class Device {
     )
     private DeviceCategory deviceCategory;
     @ManyToMany(cascade = CascadeType.PERSIST)
-//@ManyToMany(cascade = CascadeType.ALL)
-//    @ManyToMany
     @JoinTable(
             name = "device_has_customer",
             joinColumns = {@JoinColumn(
@@ -110,14 +109,11 @@ public class Device {
 
     @Override
     public String toString() {
-        return "Device{" +
+        return "Urządzenie{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", quantity=" + quantity +
-                ", price=" + price +
-                ", deviceCategory=" + deviceCategory +
-                ", customers=" + customers +
+                ", nazwa='" + name + '\'' +
+                ", ilość=" + quantity +
+                ", cena=" + price +
                 '}';
     }
 
