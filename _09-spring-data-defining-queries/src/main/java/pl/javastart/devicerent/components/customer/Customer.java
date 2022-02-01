@@ -3,9 +3,7 @@ package pl.javastart.devicerent.components.customer;
 import pl.javastart.devicerent.components.device.Device;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Table(name = "customer")
@@ -22,7 +20,7 @@ public class Customer {
     private String pesel;
     @Column(nullable = false, length = 9)
     private String idNumber;
-    @ManyToMany(mappedBy = "customers")
+    @ManyToMany(mappedBy = "customers", fetch = FetchType.EAGER)
     private List<Device> rentDevices = new ArrayList<>();
 
     public Long getId() {

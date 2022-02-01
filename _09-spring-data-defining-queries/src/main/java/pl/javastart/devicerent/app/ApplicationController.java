@@ -53,7 +53,9 @@ public class ApplicationController {
             case REMOVE_DEVICE -> deviceController.removeDevice();
             case REMOVE_DEVICE_CATEGORY -> deviceCategoryController.removeDeviceCategory();
             case REMOVE_CUSTOMER -> customerController.removeCustomer();
-            case SERACH_DEVICES -> deviceController.searchDevice();
+            case SEARCH_DEVICES -> deviceController.searchDevice();
+            case END_RENT -> rentController.endRentCustomerToDevice();
+            case PRINT_CUSTOMERS -> customerController.printCustomers();
         }
     }
 

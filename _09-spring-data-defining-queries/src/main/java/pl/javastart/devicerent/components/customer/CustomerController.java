@@ -2,6 +2,7 @@ package pl.javastart.devicerent.components.customer;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -41,5 +42,12 @@ public class CustomerController {
         long customerId = scanner.nextLong();
         Optional<Customer> customer = customerRepository.findById(customerId);
         customer.ifPresentOrElse(customerRepository::delete, () -> System.out.println("Brak klienta o wskazanym id"));
+    }
+
+    public void printCustomers() {
+        List<Customer> customers = customerRepository.findAll();
+        System.out.println();
+        customers.forEach(System.out::println);
+        System.out.println();
     }
 }

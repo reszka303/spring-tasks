@@ -9,7 +9,9 @@ enum Options {
     REMOVE_DEVICE(5, "Usuń urządzenie"),
     REMOVE_DEVICE_CATEGORY(6, "Usuń kategorię urządzenia"),
     REMOVE_CUSTOMER(7, "Usuń klienta"),
-    SERACH_DEVICES(8, "Szukaj urządzenia po nazwie")
+    SEARCH_DEVICES(8, "Szukaj urządzenia po nazwie"),
+    END_RENT(9, "Zakończ najem"),
+    PRINT_CUSTOMERS(10, "Wyświetl klientów")
     ;
 
     private int number;

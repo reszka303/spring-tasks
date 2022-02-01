@@ -4,9 +4,7 @@ import pl.javastart.devicerent.components.customer.Customer;
 import pl.javastart.devicerent.components.devicecategory.DeviceCategory;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Table(name = "device")
@@ -23,6 +21,8 @@ public class Device {
     private int quantity;
     @Column(nullable = false)
     private double price;
+//    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+//    @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(
             name = "device_category_id",
@@ -30,7 +30,9 @@ public class Device {
                     name = "fk_device_category_id")
     )
     private DeviceCategory deviceCategory;
+//    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     @ManyToMany(cascade = CascadeType.PERSIST)
+//    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     @JoinTable(
             name = "device_has_customer",
             joinColumns = {@JoinColumn(
@@ -107,6 +109,11 @@ public class Device {
         customer.getRentDevices().add(this);
     }
 
+    public void removeCustomer(Customer customer) {
+        customers.remove(customer);
+        customer.getRentDevices().remove(this);
+    }
+
     @Override
     public String toString() {
         return "Urządzenie{" +
@@ -135,5 +142,4 @@ public class Device {
     public int hashCode() {
         return Objects.hash(id, name, description, quantity, price, deviceCategory, customers);
     }
-
 }
