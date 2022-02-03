@@ -1,17 +1,17 @@
-package com.example.foodieapp;
+package pl.javastart.foodieapp;
 
-import com.example.foodieapp.item.Item;
-import com.example.foodieapp.item.ItemRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import pl.javastart.foodieapp.item.Item;
+import pl.javastart.foodieapp.item.ItemRepository;
 
 import java.util.List;
 
 @Controller
 public class HomeController {
 
-    private final ItemRepository itemRepository;
+    private ItemRepository itemRepository;
 
     public HomeController(ItemRepository itemRepository) {
         this.itemRepository = itemRepository;

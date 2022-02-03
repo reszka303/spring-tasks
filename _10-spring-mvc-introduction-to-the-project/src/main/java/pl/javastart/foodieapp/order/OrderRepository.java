@@ -1,4 +1,4 @@
-package com.example.foodieapp.order;
+package pl.javastart.foodieapp.order;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

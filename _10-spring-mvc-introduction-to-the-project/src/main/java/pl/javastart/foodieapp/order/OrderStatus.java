@@ -1,9 +1,7 @@
-package com.example.foodieapp.order;
+package pl.javastart.foodieapp.order;
 
 public enum OrderStatus {
-
     NEW,
     IN_PROGRESS,
     COMPLETE
-
 }

@@ -1,6 +1,6 @@
-package com.example.foodieapp.order;
+package pl.javastart.foodieapp.order;
 
-import com.example.foodieapp.item.Item;
+import pl.javastart.foodieapp.item.Item;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -17,15 +17,15 @@ public class Order {
     @JoinTable(
             name = "order_item",
             joinColumns = {@JoinColumn(
-                name = "order_id",
-                referencedColumnName = "id",
-                foreignKey = @ForeignKey(
-                        name = "fk_order_id"))},
+                    name = "order_id",
+                    referencedColumnName = "id",
+                    foreignKey = @ForeignKey(
+                            name = "fk_order_id"))},
             inverseJoinColumns = {@JoinColumn(
-                name = "item_id",
-                referencedColumnName = "id",
-                foreignKey = @ForeignKey(
-                    name = "fk_item_id"))}
+                    name = "item_id",
+                    referencedColumnName = "id",
+                    foreignKey = @ForeignKey(
+                            name = "fk_item_id"))}
     )
     private List<Item> items = new ArrayList<>();
     private String address;
@@ -71,6 +71,17 @@ public class Order {
 
     public void setStatus(OrderStatus status) {
         this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id=" + id +
+                ", items=" + items +
+                ", address='" + address + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", status=" + status +
+                '}';
     }
 
 }
