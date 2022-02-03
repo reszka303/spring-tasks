@@ -9,23 +9,13 @@ import java.util.List;
 @Entity
 @Table(name = "client_order")
 public class Order {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @ManyToMany
-    @JoinTable(
-            name = "order_item",
-            joinColumns = {@JoinColumn(
-                    name = "order_id",
-                    referencedColumnName = "id",
-                    foreignKey = @ForeignKey(
-                            name = "fk_order_id"))},
-            inverseJoinColumns = {@JoinColumn(
-                    name = "item_id",
-                    referencedColumnName = "id",
-                    foreignKey = @ForeignKey(
-                            name = "fk_item_id"))}
+    @JoinTable(name = "order_item",
+        joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn(name = "item_id", referencedColumnName = "id")
     )
     private List<Item> items = new ArrayList<>();
     private String address;
@@ -83,5 +73,4 @@ public class Order {
                 ", status=" + status +
                 '}';
     }
-
 }
