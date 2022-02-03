@@ -1,6 +1,5 @@
 package pl.javastart.foodieapp.item;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,9 +10,8 @@ import java.util.Optional;
 @Controller
 public class ItemController {
 
-    private ItemRepository itemRepository;
+    private final ItemRepository itemRepository;
 
-    @Autowired
     public ItemController(ItemRepository itemRepository) {
         this.itemRepository = itemRepository;
     }

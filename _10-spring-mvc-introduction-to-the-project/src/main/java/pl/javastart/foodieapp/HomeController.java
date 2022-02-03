@@ -11,7 +11,7 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-    private ItemRepository itemRepository;
+    private final ItemRepository itemRepository;
 
     public HomeController(ItemRepository itemRepository) {
         this.itemRepository = itemRepository;
