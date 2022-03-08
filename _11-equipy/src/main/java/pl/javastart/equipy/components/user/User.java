@@ -1,4 +1,4 @@
-package com.example.equipy.components.user;
+package pl.javastart.equipy.components.user;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +15,12 @@ public class User {
     private String firstName;
     private String lastName;
     private String pesel;
+
+    public User() {}
+
+    public User(String lastName) {
+        this.lastName = lastName;
+    }
 
     public Long getId() {
         return id;

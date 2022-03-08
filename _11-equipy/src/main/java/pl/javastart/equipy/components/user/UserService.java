@@ -1,4 +1,4 @@
-package com.example.equipy.components.user;
+package pl.javastart.equipy.components.user;
 
 import org.springframework.stereotype.Service;
 
@@ -16,6 +16,18 @@ public class UserService {
 
     List<UserDto> findAll() {
         return userRepository.findAll()
+                .stream()
+                .map(UserMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+    List<UserDto> findByLastName(String lastName) {
+//        return userRepository.findAllByLastNameIgnoreCase(lastName)
+//                .stream()
+//                .map(UserMapper::toDto)
+//                .collect(Collectors.toList());
+
+        return userRepository.findAllByLastNameContainingIgnoreCase(lastName)
                 .stream()
                 .map(UserMapper::toDto)
                 .collect(Collectors.toList());
