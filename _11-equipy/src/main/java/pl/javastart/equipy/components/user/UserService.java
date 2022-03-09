@@ -3,6 +3,7 @@ package pl.javastart.equipy.components.user;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -31,6 +32,16 @@ public class UserService {
                 .stream()
                 .map(UserMapper::toDto)
                 .collect(Collectors.toList());
+    }
+
+    UserDto save(UserDto user) {
+        Optional<User> userByPesel = userRepository.findByPesel(user.getPesel());
+        userByPesel.ifPresent(u -> {
+            throw new DuplicatePeselException();
+        });
+        User userEntity = UserMapper.toEntity(user);
+        User savedUser = userRepository.save(userEntity);
+        return UserMapper.toDto(savedUser);
     }
 
 }

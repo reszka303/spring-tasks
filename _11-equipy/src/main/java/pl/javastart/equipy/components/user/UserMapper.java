@@ -14,7 +14,7 @@ public class UserMapper {
     static User toEntity(UserDto userDto) {
         User entity = new User();
         entity.setId(entity.getId());
-        entity.setFirstName(entity.getFirstName());
+        entity.setFirstName(userDto.getFirstName());
         entity.setLastName(userDto.getLastName());
         entity.setPesel(userDto.getPesel());
         return entity;
