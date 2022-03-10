@@ -1,7 +1,10 @@
 spring:
+  datasource:
+    url: jdbc:h2:mem:test
   h2:
     console:
       path: /h2
+      enabled: true
   jpa:
     defer-datasource-initialization: true
     open-in-view: true

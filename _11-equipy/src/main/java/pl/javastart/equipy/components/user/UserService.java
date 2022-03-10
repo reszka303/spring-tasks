@@ -1,11 +1,13 @@
 package pl.javastart.equipy.components.user;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Transactional
 @Service
 public class UserService {
 
@@ -23,11 +25,6 @@ public class UserService {
     }
 
     List<UserDto> findByLastName(String lastName) {
-//        return userRepository.findAllByLastNameIgnoreCase(lastName)
-//                .stream()
-//                .map(UserMapper::toDto)
-//                .collect(Collectors.toList());
-
         return userRepository.findAllByLastNameContainingIgnoreCase(lastName)
                 .stream()
                 .map(UserMapper::toDto)
@@ -39,9 +36,29 @@ public class UserService {
         userByPesel.ifPresent(u -> {
             throw new DuplicatePeselException();
         });
+        return mapAndSaveUser(user);
+    }
+
+    UserDto update(UserDto user) {
+        Optional<User> userByPesel = userRepository.findByPesel(user.getPesel());
+        userByPesel.ifPresent(u -> {
+            if (!u.getId().equals(user.getId())) {
+                throw new DuplicatePeselException();
+            }
+        });
+        return mapAndSaveUser(user);
+
+    }
+
+    private UserDto mapAndSaveUser(UserDto user) {
         User userEntity = UserMapper.toEntity(user);
         User savedUser = userRepository.save(userEntity);
         return UserMapper.toDto(savedUser);
+    }
+
+
+    Optional<UserDto> findById(Long id) {
+        return userRepository.findById(id).map(UserMapper::toDto);
     }
 
 }
