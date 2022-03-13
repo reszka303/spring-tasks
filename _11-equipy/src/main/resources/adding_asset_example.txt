@@ -15,3 +15,11 @@ Opis:
     "serialNumber": "MS72JK99AS2017",
     "category": "Laptopy"
 }
+
+{
+    "id": 9,
+    "name": "Opel Insignia GSi",
+    "description": "Samochód osobowy, 6 biegowa automatyczna skrzynia biegów, diesel silnik 2.2",
+    "serialNumber": "XHG78K64",
+    "category": "Pojazdy"
+}

@@ -47,7 +47,6 @@ public class UserService {
             }
         });
         return mapAndSaveUser(user);
-
     }
 
     private UserDto mapAndSaveUser(UserDto user) {

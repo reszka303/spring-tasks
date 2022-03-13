@@ -31,7 +31,8 @@ public class AssetResource {
     @PostMapping("")
     public ResponseEntity<AssetDto> save(@RequestBody AssetDto asset) {
         if (asset.getId() != null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Zapisywany obiekt nie może mieć ustawionego id");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "Zapisywany obiekt nie może mieć ustawionego id");
         }
         AssetDto savedUser = assetService.save(asset);
         URI location = ServletUriComponentsBuilder
@@ -40,6 +41,30 @@ public class AssetResource {
                 .buildAndExpand(savedUser.getId())
                 .toUri();
         return ResponseEntity.created(location).body(savedUser);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<AssetDto> update(@PathVariable Long id,
+                                           @RequestBody AssetDto asset) {
+        if (!id.equals(asset.getId())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "Aktualizowany obiekt musi mieć id zgodne z id w ścieżce zasobu");
+        }
+        AssetDto updatedAsset = assetService.update(asset);
+        return ResponseEntity.ok(updatedAsset);
+    }
+
+    /*
+    Adnotacja @PathVariable służy do powiązania parametru metody ze zmienną
+    w ścieżce zasobu to co jest w nawiasie klamrowym
+    Nazwa parametru w ścieżce zasobu @GetMapping("/{id}") {id} - nawias klamrowy
+     */
+
+    @GetMapping("/{id}")
+    ResponseEntity<AssetDto> findById(@PathVariable() Long id) {
+       return assetService.findById(id)
+               .map(ResponseEntity::ok)
+               .orElse(ResponseEntity.notFound().build());
     }
 
 }
