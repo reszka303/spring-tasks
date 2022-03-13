@@ -1,0 +1,17 @@
+Dodawane urządzenie
+Nazwa:
+Microsoft Surface Pro 2017
+Numer seryjny:
+MS72JK99AS2017
+Kategoria:
+Laptopy
+Opis:
+12 cali, procesor Intel i5,16GB ram, 128GB SSD
+
+{
+    "id": 11,
+    "name": "Microsoft Surface Pro 2017",
+    "description": "12 cali, procesor Intel i5,16GB ram, 128GB SSD",
+    "serialNumber": "MS72JK99AS2017",
+    "category": "Laptopy"
+}
