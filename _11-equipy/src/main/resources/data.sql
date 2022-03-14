@@ -27,3 +27,9 @@ VALUES
     (9, 'Opel Insignia GSi', 'Samochód osobowy, 6 biegowa automatyczna skrzynia biegów, benzynowy silnik 2.0', 'XHG78K64', 3),
     (10, 'Ford Focus', 'Samochód osobowy, 5 biegowa manualna skrzynia biegów, silnik diesel 1.6', 'M24HP88GYJ', 3);
 
+INSERT INTO
+    assignment(id, start, end, asset_id, user_id)
+VALUES
+    (1, '2022-01-08 15:00:00', '2022-03-03 15:00:00', 1, 1),
+    (2, '2022-03-09 12:00:00', NULL, 5, 1),
+    (3, '2022-03-10 16:00:00', NULL, 9, 1);

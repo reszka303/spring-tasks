@@ -61,4 +61,9 @@ public class UserResource {
                 .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/{id}/assignments")
+    public List<UserAssignmentDto> getUserAssignments(@PathVariable Long id) {
+        return userService.getUserAssignments(id);
+    }
+
 }

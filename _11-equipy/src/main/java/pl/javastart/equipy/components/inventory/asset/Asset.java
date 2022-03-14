@@ -25,6 +25,7 @@ public class Asset {
     // mapujemy category w klasie Category za pomocą adnotacji @OneToMany(mappedBy = "category")
     private Category category;
 
+
     public Long getId() {
         return id;
     }

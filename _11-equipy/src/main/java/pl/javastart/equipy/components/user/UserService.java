@@ -60,4 +60,13 @@ public class UserService {
         return userRepository.findById(id).map(UserMapper::toDto);
     }
 
+    List<UserAssignmentDto> getUserAssignments(Long userId) {
+        return userRepository.findById(userId)
+                .map(User::getAssignments)
+                .orElseThrow(UserNotFoundException::new)
+                .stream()
+                .map(UserAssignmentMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
 }
