@@ -11,6 +11,7 @@ public class UserAssignmentMapper {
         dto.setAssetId(assignment.getId());
         dto.setStart(assignment.getStart());
         dto.setEnd(assignment.getEnd());
+
         Asset asset = assignment.getAsset();
         dto.setAssetName(asset.getName());
         dto.setAssetSerialNumber(asset.getSerialNumber());

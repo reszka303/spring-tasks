@@ -67,4 +67,9 @@ public class AssetResource {
                .orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/{id}/assignments")
+    List<AssetAssignmentDto> getAssignments(@PathVariable Long id) {
+        return assetService.getAssignments(id);
+    }
+
 }

@@ -59,6 +59,4 @@ public class UserAssignmentDto {
         this.assetSerialNumber = assetSerialNumber;
     }
 
-
-
 }

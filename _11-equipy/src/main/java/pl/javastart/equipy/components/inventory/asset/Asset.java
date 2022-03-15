@@ -1,8 +1,12 @@
 package pl.javastart.equipy.components.inventory.asset;
 
+import pl.javastart.equipy.components.assignment.Assignment;
 import pl.javastart.equipy.components.inventory.category.Category;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "asset")
@@ -24,7 +28,8 @@ public class Asset {
     )
     // mapujemy category w klasie Category za pomocą adnotacji @OneToMany(mappedBy = "category")
     private Category category;
-
+    @OneToMany(mappedBy = "asset")
+    private List<Assignment> assignments = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -64,6 +69,32 @@ public class Asset {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public List<Assignment> getAssignments() {
+        return assignments;
+    }
+
+    public void setAssignments(List<Assignment> assignments) {
+        this.assignments = assignments;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Asset asset = (Asset) o;
+        return Objects.equals(id, asset.id) &&
+                Objects.equals(name, asset.name) &&
+                Objects.equals(description, asset.description) &&
+                Objects.equals(serialNumber, asset.serialNumber) &&
+                Objects.equals(category, asset.category) &&
+                        Objects.equals(assignments, asset.assignments);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, description, serialNumber, category, assignments);
     }
 
 }

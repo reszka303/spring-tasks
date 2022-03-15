@@ -59,5 +59,14 @@ public class AssetService {
         return assetMapper.toDto(savedAsset);
     }
 
+    List<AssetAssignmentDto> getAssignments(Long assetId) {
+        return assetRepository.findById(assetId)
+                .map(Asset::getAssignments)
+                .orElseThrow(AssetNotFoundException::new)
+                .stream()
+                .map(AssetAssignmentMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
 }
 
