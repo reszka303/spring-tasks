@@ -23,3 +23,8 @@ Opis:
     "serialNumber": "XHG78K64",
     "category": "Pojazdy"
 }
+
+{
+    "userId": 3,
+    "assetId": 2
+}

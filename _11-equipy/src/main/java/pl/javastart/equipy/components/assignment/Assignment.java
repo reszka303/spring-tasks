@@ -14,6 +14,7 @@ public class Assignment {
     private Long id;
     private LocalDateTime start;
     private LocalDateTime end;
+
     @ManyToOne
     @JoinColumn(
             name = "user_id",
@@ -22,6 +23,7 @@ public class Assignment {
             )
     )
     private User user;
+
     @ManyToOne
     @JoinColumn(
             name = "asset_id",
