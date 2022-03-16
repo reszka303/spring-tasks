@@ -1,12 +1,15 @@
 package pl.javastart.equipy.components.assignment;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.javastart.equipy.components.inventory.asset.Asset;
+import pl.javastart.equipy.components.inventory.asset.AssetNotFoundException;
 import pl.javastart.equipy.components.inventory.asset.AssetRepository;
 import pl.javastart.equipy.components.user.User;
 import pl.javastart.equipy.components.user.UserRepository;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -41,6 +44,18 @@ public class AssignmentService {
                 new InvalidAssignmentException("Brak wyposażenia z id" + assetId)));
         assignment.setStart(LocalDateTime.now());
         return AssignmentMapper.toDto(assignmentRepository.save(assignment));
+    }
+
+    @Transactional
+    public LocalDateTime finishAssignment(Long assignmentId) {
+        Optional<Assignment> assignment = assignmentRepository.findById(assignmentId);
+        Assignment assignmentEntity = assignment.orElseThrow(AssignmentNotFoundException::new);
+        if (assignmentEntity.getEnd() != null) {
+            throw new AssignmentAlreadyFinishedException();
+        } else {
+            assignmentEntity.setEnd(LocalDateTime.now());
+        }
+        return assignmentEntity.getEnd();
     }
 
 }

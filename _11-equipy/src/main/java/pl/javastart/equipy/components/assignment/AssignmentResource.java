@@ -7,6 +7,7 @@ import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/api/assignments")
@@ -32,6 +33,12 @@ public class AssignmentResource {
                 .buildAndExpand(savedAssignment.getId())
                 .toUri();
         return ResponseEntity.created(location).body(savedAssignment);
+    }
+
+    @PostMapping("{id}/end")
+    public ResponseEntity finishAssignment(@PathVariable Long id) {
+        LocalDateTime endDate = assignmentService.finishAssignment(id);
+        return ResponseEntity.accepted().body(endDate);
     }
 
 }
